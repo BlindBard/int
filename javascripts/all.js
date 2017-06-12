@@ -1745,11 +1745,11 @@ b){if(!b||this.visible){clearTimeout(this.fadeTimeout);this.fadeTimeout=null;var
       return setTimeout((function() {
         $('#scroll-set li').removeClass('imVisible');
         return $li.addClass('imVisible');
-      }), delay += 1500);
+      }), delay += 800);
     });
     return setTimeout((function() {
       return $('#loader-wrapper').fadeOut(500);
-    }), 12000);
+    }), 6500);
   };
 
   $(function() {
