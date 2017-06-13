@@ -2183,8 +2183,9 @@ th, td {
   .rent_2 .remodal-close {
     top: auto;
     left: auto;
-    right: 85px;
+    right: 50px;
     bottom: 0;
+    width: 75px;
     text-decoration: underline; }
     .rent_2 .remodal-close::before {
       display: none; }
@@ -2996,7 +2997,7 @@ th, td {
     .rent_2 .send {
       left: 15px; }
     .rent_2 .remodal-close {
-      right: 55px; }
+      right: 15px; }
 
   .form.comment {
     margin-bottom: 30px; } }
@@ -3103,7 +3104,7 @@ th, td {
   .rent_2 .send {
     left: 15px; }
   .rent_2 .remodal-close {
-    right: 50px; }
+    right: 15px; }
 
   .form.comment {
     margin-bottom: 30px; } }
