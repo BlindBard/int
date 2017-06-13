@@ -70,6 +70,43 @@
           </li></ul>
       </div>
     </div>
+    <div class='remodal rent_1' data-remodal-id='rent_1'>
+      <button class='remodal-close' data-remodal-action='close'></button>
+      <h6>щоб завітати до нас:</h6>
+      <b>
+        Менеджер проектів, оренди
+        <span class='js-phone-conatiner'>+380 68 000 00 00</span>
+      </b>
+      <div class='and'>або</div>
+      <b class='bracket m-0'>надішліть заявку</b>
+      <p>наші менеджери опрацють запит і невдозі звяжуться з Вами</p>
+      <div class='send-request'>
+        <a class='button' href='#rent_2'>Надіслати заявку</a>
+      </div>
+    </div>
+    <div class='remodal rent_2' data-remodal-id='rent_2'>
+      <button class='remodal-close' data-remodal-action='close'>Скасувати</button>
+      <p>Будь ласка заповніть всі поля коректно</p>
+      <form action='/' class='rent-form'>
+        <div class='line'><div class='item'>
+            <input class='form name-date' placeholder='Ім’я та прізвище' type='text'>
+          </div><div class='item'>
+            <input class='form tel' placeholder='Контактний телефон' type='tel'>
+          </div></div>
+        <div class='line'><div class='item' id='startDate'>
+            <input class='form js-date name-date form-control' placeholder='Бажана дата' type='text'>
+          </div><div class='item'>
+            <input class='checked' id='hubdate' name='check' type='checkbox' value='check'>
+            <label for='hubdate'>Дата яку пропонує Hub</label>
+          </div></div>
+        <div class='line'>
+          <textarea class='form comment' cols='45' name='text' placeholder='Коментар' rows='3'></textarea>
+        </div>
+        <div class='send'>
+          <input class='button' type='submit' value='Відправити'>
+        </div>
+      </form>
+    </div>
     <div id='fullpage'>
       <div class='section s1'>
         <div class='header'>
@@ -243,7 +280,7 @@
               </div>
             </div>
             <div class='coworking-btn'>
-              <a class='button' href='#'>Замовити</a>
+              <a class='button' href='#rent_1'>Замовити</a>
             </div>
           </div>
           <span class='mouse'>events</span>
