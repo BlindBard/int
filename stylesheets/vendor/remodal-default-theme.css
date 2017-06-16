@@ -106,7 +106,6 @@
   padding: 0;
 
   cursor: pointer;
-  -webkit-transition: color 0.2s;
   transition: color 0.2s;
   text-decoration: none;
 
@@ -152,7 +151,6 @@
   padding: 12px 0;
 
   cursor: pointer;
-  -webkit-transition: background 0.2s;
   transition: background 0.2s;
   text-align: center;
   vertical-align: middle;
