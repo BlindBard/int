@@ -1178,7 +1178,7 @@ a:hover {
       background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABYAAAAWCAMAAADzapwJAAAAwFBMVEUAAAD///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABiCivsAAAAP3RSTlMAAAECBggJDBQVFxkaHyAnKi40Njo7Q0dJU1RdX2Jpbn6EhZGZoaKlrq+0trvM0dvc3+Hm6+3u8fX2+Pn6/f4NATLZAAAAjUlEQVR42rXIRxKCQBAF0C8mzBjBiDlHFDP0/W9l2TXMTJUu9S0fYl/9rI0cWGp0ukzzdk10dVfgntHbOmqH/A6AbMh9rovO3Ik2vVKZWBeii8OAlGbUFdJZUWOl7TEuOz1+yB5AdvIg1zdVw9qKDVvQGuaSN3ChutGfX3k9G1obzmR/e3qLdgKqP/25XxqrH9uOqzsQAAAAAElFTkSuQmCC); }
 
 .overlay {
-  position: absolute;
+  position: fixed;
   top: 0;
   right: -635px;
   width: 635px;
@@ -1313,10 +1313,11 @@ a {
   z-index: 1;
   font-size: 18px;
   line-height: 20px;
-  letter-spacing: 6px;
+  letter-spacing: 3px;
   color: #fff;
   padding: 0 35px;
-  width: 317px; }
+  width: 315px;
+  text-align: center; }
   .want::before {
     position: absolute;
     top: 50%;
@@ -1327,7 +1328,11 @@ a {
     content: '[';
     display: block;
     font-size: 40px;
-    line-height: 20px; }
+    line-height: 20px;
+    margin-top: -3px;
+    transition: ease 1s; }
+  .want:hover::before {
+    left: 20px; }
   .want::after {
     position: absolute;
     top: 50%;
@@ -1338,14 +1343,18 @@ a {
     content: ']';
     display: block;
     font-size: 40px;
-    line-height: 20px; }
+    line-height: 20px;
+    margin-top: -3px;
+    transition: ease 1s; }
+  .want:hover::after {
+    right: 20px; }
 
 .under-carousel {
   text-align: center;
   padding: 50px 0 75px; }
 
 .slogan {
-  width: 200px;
+  width: 210px;
   float: left;
   text-align: left; }
 
@@ -1494,39 +1503,36 @@ a.coworking {
 .under-about {
   padding-bottom: 45px;
   border-bottom: 1px solid #f3f3f3; }
-  .under-about .about-left {
-    width: 50%;
-    float: left;
-    padding-right: 75px; }
-    .under-about .about-left .vision h4,
-    .under-about .about-left .mision h4 {
-      font-size: 18px;
-      line-height: 22px;
-      padding: 75px 0 35px 0; }
-    .under-about .about-left .vision p, .under-about .about-left .vision li,
-    .under-about .about-left .mision p,
-    .under-about .about-left .mision li {
-      font-size: 14px;
-      line-height: 22px; }
-    .under-about .about-left .mision ul {
-      list-style: disc;
-      margin-left: 15px; }
-    .under-about .about-left .about-heading {
-      font-family: "Arial Black", "Arial Bold", Gadget, sans-serif;
-      font-size: 24px;
-      line-height: 33px; }
-  .under-about .about-right {
-    width: 50%;
-    float: right;
-    padding-left: 75px; }
-  .under-about .philosophy h4 {
+
+.vision,
+.mision {
+  width: 45%; }
+  .vision h4,
+  .mision h4 {
     font-size: 18px;
     line-height: 22px;
-    padding-bottom: 35px; }
-  .under-about .philosophy p {
+    padding: 75px 0 35px 0; }
+  .vision p, .vision li,
+  .mision p,
+  .mision li {
     font-size: 14px;
-    line-height: 22px;
-    padding-bottom: 35px; }
+    line-height: 22px; }
+
+.vision {
+  float: left; }
+
+.mision {
+  padding-bottom: 30px;
+  float: right; }
+  .mision ul {
+    list-style: disc;
+    margin-left: 15px; }
+
+.about-heading {
+  width: 45%;
+  font-family: "Arial Black", "Arial Bold", Gadget, sans-serif;
+  font-size: 24px;
+  line-height: 33px; }
 
 .events-sec {
   background: #f5f5f5; }
@@ -1793,6 +1799,8 @@ a.coworking {
       width: 440px; }
       .contacts-box li.address .ico-con {
         background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABsAAAAbCAMAAAC6CgRnAAABTVBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABviDd3AAAAb3RSTlMAAQQFBgcJDBUXGBocHh8gISIjJCcoKistMzc5Ozw+QEJDR0tQUVNUVVZXWFtdX2Npa2xvcnN0dXZ3eHp+f4GOj5GSlZagoqSnqKmqrK6vsbS2uLy9v8HDxNDS09TX2d3e3+Dj5efr8/X29/j5/f6EA7NbAAABQElEQVR4AW2O61cBURTFj5oRkgdFepcoIRGpPFQYKtP7UZRCCXPr///YOnOW3JHfh73nZ9+7LugjbJZev1ij5BdgmDg7D81MCNZQhR2ABkvh0vn3LefN3OT65s/qUj/TAyvEQMNuAfocVmAIeR8IgU2p7cw9PebsgFiZQFuwrNZGL76wuNfzq1IO0nYWwJxlK1irzIW1dUpbw4op7ZDFipi2dzJFpBNk9jdMUSGjdz9NZJMf9P/ImhbMmzUy7zWmpUkm+zDXL8awxq+8WD6ZtrCk1klxDmBeOlZFCtOm79JT21VFeabfTF09EOkjIEQRiFyaGi/aQINNvUYk73TAobtNcpaPAkc0z5u74xmIp+MGnkjLDASYWxHQknox0IehloJhsjUjlrGahf9k6g4ARz0Do0i0l5bbCRhN8OE+wPsvLLIrYymVGpYAAAAASUVORK5CYII=); }
+      .contacts-box li.address .bracket {
+        margin-left: -10px; }
     .contacts-box li.email {
       width: 380px; }
       .contacts-box li.email .ico-con {
@@ -1804,8 +1812,8 @@ a.coworking {
 
 .bracket {
   position: relative;
-  padding: 0 5px;
-  margin: 0 4px;
+  padding: 0 10px;
+  margin: 0 5px;
   display: inline-block; }
   .bracket::before {
     position: absolute;
@@ -1872,7 +1880,6 @@ a.coworking {
   .coworking-slide .conference,
   .conference-slide .coworking,
   .conference-slide .conference {
-    display: inherit;
     width: 100%;
     padding-top: 100px; }
     .coworking-slide .coworking span,
@@ -2343,6 +2350,11 @@ th, td {
     width: 320px;
     height: 415px; } }
 @media screen and (max-width: 1024px) {
+  body {
+    overflow-x: hidden; }
+    body.no-scroll {
+      overflow: hidden !important; }
+
   .main-menu {
     padding: 140px 0 42px; }
 
@@ -2426,7 +2438,10 @@ th, td {
 
   .conference-slide .mouse-events,
   .coworking-slide .mouse-events {
-    bottom: 0; }
+    bottom: 20px; }
+    .conference-slide .mouse-events::after,
+    .coworking-slide .mouse-events::after {
+      top: 40px; }
 
   .coworking-img,
   .conference-img {
@@ -2440,8 +2455,8 @@ th, td {
   .conference-info,
   .coworking-info {
     width: 100%;
-    float: inherit;
-    padding: 30px 0 0 0; }
+    float: none;
+    padding: 30px 0; }
     .conference-info .person,
     .conference-info .table,
     .conference-info .hall,
@@ -2465,11 +2480,13 @@ th, td {
     .coworking-info .hall {
       padding-bottom: 10px; }
     .conference-info .coworking-btn,
-    .conference-info .conference-btn,
-    .coworking-info .coworking-btn,
-    .coworking-info .conference-btn {
+    .coworking-info .coworking-btn {
       text-align: center;
       padding-bottom: 100px; }
+    .conference-info .conference-btn,
+    .coworking-info .conference-btn {
+      text-align: center;
+      padding-bottom: 125px; }
 
   .conference-tables .big {
     width: 130px; }
@@ -2569,7 +2586,10 @@ th, td {
         -ms-transform: none;
             transform: none;
     width: 100%;
-    padding-top: 200px; }
+    padding-top: 250px; }
+
+  .mouse-events {
+    bottom: -200px; }
 
   .events-heading {
     padding: 50px 0 65px; }
@@ -2593,10 +2613,8 @@ th, td {
   .about-carousel {
     padding: 0 0 60px 0; }
 
-  .under-about .about-left {
-    padding-right: 25px; }
-  .under-about .about-right {
-    padding-left: 25px; }
+  .about-heading {
+    width: 100%; }
 
   .team .team-box {
     width: 600px;
@@ -2671,18 +2689,14 @@ th, td {
   .rent-arrow {
     bottom: 15px; }
 
-  a.conference,
-  a.coworking {
-    padding-top: 55px; }
-
-  a.coworking {
-    padding-bottom: 100px; }
-
   .mouse-events {
-    bottom: 10px;
     font-size: 14px; }
     .mouse-events::after {
       top: 30px; }
+
+  .conference-info .coworking-btn,
+  .coworking-info .coworking-btn {
+    padding-bottom: 81px; }
 
   .counter {
     padding: 0; }
@@ -2756,17 +2770,13 @@ th, td {
   .about-carousel {
     padding: 0 0 60px 0; }
 
-  .under-about .about-left {
-    padding-right: 25px; }
-    .under-about .about-left .vision h4,
-    .under-about .about-left .mision h4 {
+  .under-about .vision,
+  .under-about .mision {
+    float: inherit;
+    width: 100%; }
+    .under-about .vision h4,
+    .under-about .mision h4 {
       padding: 30px 0 10px 0; }
-  .under-about .about-right {
-    padding-left: 25px; }
-    .under-about .about-right .philosophy h4 {
-      padding: 30px 0 10px 0; }
-    .under-about .about-right .philosophy p {
-      padding-bottom: 15px; }
 
   .team .team-box {
     width: 600px;
@@ -2848,12 +2858,7 @@ th, td {
   .rent-arrow {
     bottom: 15px; }
 
-  a.conference,
-  a.coworking {
-    padding-top: 55px; }
-
   .mouse-events {
-    bottom: 10px;
     font-size: 14px; }
     .mouse-events::after {
       top: 30px; }
@@ -2998,11 +3003,8 @@ th, td {
 
   .mouse,
   .mouse-events {
-    font-size: 14px; }
-
-  a.conference,
-  a.coworking {
-    padding-top: 40px; }
+    font-size: 14px;
+    bottom: -160px; }
 
   .conference span,
   .coworking span {
@@ -3010,7 +3012,14 @@ th, td {
     margin: 0 auto; }
 
   .events-box {
-    text-align: center; } }
+    text-align: center; }
+
+  .conference-info .coworking-btn,
+  .coworking-info .coworking-btn {
+    padding-bottom: 81px; }
+  .conference-info .conference-btn,
+  .coworking-info .conference-btn {
+    padding-bottom: 147px; } }
 @media screen and (max-width: 568px) {
   .header {
     padding: 10px 0; }
@@ -3057,10 +3066,6 @@ th, td {
   .coworking span {
     padding-top: 15px; }
 
-  a.conference,
-  a.coworking {
-    padding-top: 35px; }
-
   .rent_1 {
     padding: 45px; }
 
@@ -3077,7 +3082,15 @@ th, td {
       right: 15px; }
 
   .form.comment {
-    margin-bottom: 30px; } }
+    margin-bottom: 30px; }
+
+  .coworking-tables .person,
+  .coworking-tables .table {
+    display: block; }
+
+  .conference-info .conference-btn,
+  .coworking-info .conference-btn {
+    padding: 50px 0 112px; } }
 @media screen and (max-width: 480px) {
   .overlay-close {
     position: absolute;
@@ -3106,10 +3119,6 @@ th, td {
     padding: 20px 40px;
     z-index: 5; }
 
-  a.conference,
-  a.coworking {
-    padding-top: 100px; }
-
   .conference,
   .coworking {
     font-size: 35px;
@@ -3133,7 +3142,14 @@ th, td {
     margin-left: -20px; }
 
   .rent_1 .js-morelink {
-    margin-left: 100px; } }
+    margin-left: 100px; }
+
+  .conference-info .coworking-btn,
+  .coworking-info .coworking-btn {
+    padding: 30px 0 152px; }
+  .conference-info .conference-btn,
+  .coworking-info .conference-btn {
+    padding: 0 0 80px; } }
 @media screen and (max-width: 375px) {
   .header {
     position: relative;
@@ -3142,10 +3158,6 @@ th, td {
   .swiper-slide img {
     width: auto;
     height: 520px; }
-
-  a.conference,
-  a.coworking {
-    padding-top: 100px; }
 
   .conference,
   .coworking {
@@ -3159,9 +3171,6 @@ th, td {
   .blue::after,
   .yellow::after {
     font-size: 100px; }
-
-  .rent-arrow {
-    bottom: 20px; }
 
   .blue,
   .yellow {
@@ -3219,15 +3228,21 @@ th, td {
     margin: 25px 0 5px; }
 
   .rent-logo {
-    top: auto;
-    left: -5px;
-    bottom: 50px; }
+    left: -14px; }
+    .rent-logo::before {
+      left: 10px; }
+    .rent-logo::after {
+      right: 10px; }
+
+  .conference-slide .rent-logo {
+    right: -14px; }
 
   .conference-info .coworking-btn,
+  .coworking-info .coworking-btn {
+    padding: 50px 0 163px; }
   .conference-info .conference-btn,
-  .coworking-info .coworking-btn,
   .coworking-info .conference-btn {
-    padding-bottom: 130px; }
+    padding-bottom: 110px; }
 
   .rent_1 .js-morelink {
     margin-left: 35px; } }

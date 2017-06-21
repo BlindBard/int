@@ -1,0 +1,112 @@
+(function() {
+  var $fullPage, debounce, initDesktopFullPage, initMobileFullPage, reInitDesktopFullPage, reInitMobileFullPage, startFullPageOnLoad, startFullPageOnResize, windowWidth;
+
+  windowWidth = $(window).outerWidth();
+
+  $fullPage = $('#fullpage');
+
+  debounce = function(func, wait, immediate) {
+    var timeout;
+    timeout = void 0;
+    return function() {
+      var args, callNow, context, later;
+      context = this;
+      args = arguments;
+      later = function() {
+        timeout = null;
+        if (!immediate) {
+          return func.apply(context, args);
+        }
+      };
+      callNow = immediate && !timeout;
+      clearTimeout(timeout);
+      timeout = setTimeout(later, wait);
+      if (callNow) {
+        return func.apply(context, args);
+      }
+    };
+  };
+
+  startFullPageOnResize = debounce((function() {
+    var windowSize;
+    windowSize = (function() {
+      switch (false) {
+        case !(windowWidth > 1025):
+          return 'desktop';
+        default:
+          return 'mobile';
+      }
+    })();
+    if (windowSize === 'desktop') {
+      reInitDesktopFullPage();
+    }
+    if (windowSize === 'mobile') {
+      return reInitMobileFullPage();
+    }
+  }), 300);
+
+  startFullPageOnLoad = function() {
+    if ($(window).width() > 1025) {
+      return initDesktopFullPage();
+    } else {
+      return initMobileFullPage();
+    }
+  };
+
+  initDesktopFullPage = function() {
+    if ($('body').hasClass('home-page')) {
+      return $fullPage.fullpage({
+        scrollOverflow: true,
+        menu: '#menu',
+        anchors: ['none', 'hub', 'rent', 'events', 'team', 'contacts'],
+        verticalCentered: false
+      });
+    }
+  };
+
+  initMobileFullPage = function() {
+    $('.section').addClass('fp-auto-height');
+    if ($('body').hasClass('home-page')) {
+      return $fullPage.fullpage({
+        menu: '#menu',
+        anchors: ['none', 'hub', 'rent', 'events', 'team', 'contacts'],
+        css3: true,
+        autoScrolling: false,
+        keyboardScrolling: false,
+        fitToSection: false
+      });
+    }
+  };
+
+  reInitDesktopFullPage = debounce((function() {
+    $('.section').removeClass('fp-auto-height');
+    $.fn.fullpage.destroy('all');
+    return initDesktopFullPage();
+  }), 500);
+
+  reInitMobileFullPage = debounce((function() {
+    $('.section').addClass('fp-auto-height');
+    $.fn.fullpage.destroy('all');
+    return initMobileFullPage();
+  }), 500);
+
+  $(window).on('resize', function() {
+    if ($(window).outerWidth() !== windowWidth) {
+      $(window).trigger('widthResize');
+      return windowWidth = $(window).outerWidth();
+    }
+  });
+
+  $(window).on('widthResize', function() {
+    if ($('body').hasClass('home-page')) {
+      return startFullPageOnResize();
+    }
+  });
+
+  $(function() {
+    if ($('body').hasClass('home-page')) {
+      return startFullPageOnLoad();
+    }
+  });
+
+}).call(this);

@@ -1515,6 +1515,7 @@ if ( typeof define === 'function' && define.amd ) {
 (function() {
 	var triggerBttn = document.getElementById( 'trigger-overlay' ),
 		overlay = document.querySelector( 'div.overlay' ),
+		body = document.querySelector( 'body' ),
 		closeBttn = overlay.querySelector( 'a.overlay-close' );
 		slideBttnCont = document.getElementById( 'menu' );
 		transEndEventNames = {
@@ -1532,6 +1533,7 @@ if ( typeof define === 'function' && define.amd ) {
 		if( classie.has( overlay, 'open' ) ) {
 			classie.remove( overlay, 'open' );
 			classie.add( overlay, 'close' );
+			classie.remove(body, 'no-scroll');
 			var onEndTransitionFn = function( ev ) {
 				if( support.transitions ) {
 					if( ev.propertyName !== 'visibility' ) return;
@@ -1548,6 +1550,7 @@ if ( typeof define === 'function' && define.amd ) {
 		}
 		else if( !classie.has( overlay, 'close' ) ) {
 			classie.add( overlay, 'open' );
+			classie.add(body, 'no-scroll');
 		}
 	}
 
@@ -1706,6 +1709,118 @@ $(document).ready(function() {
     });
 });
 (function() {
+  var $fullPage, debounce, initDesktopFullPage, initMobileFullPage, reInitDesktopFullPage, reInitMobileFullPage, startFullPageOnLoad, startFullPageOnResize, windowWidth;
+
+  windowWidth = $(window).outerWidth();
+
+  $fullPage = $('#fullpage');
+
+  debounce = function(func, wait, immediate) {
+    var timeout;
+    timeout = void 0;
+    return function() {
+      var args, callNow, context, later;
+      context = this;
+      args = arguments;
+      later = function() {
+        timeout = null;
+        if (!immediate) {
+          return func.apply(context, args);
+        }
+      };
+      callNow = immediate && !timeout;
+      clearTimeout(timeout);
+      timeout = setTimeout(later, wait);
+      if (callNow) {
+        return func.apply(context, args);
+      }
+    };
+  };
+
+  startFullPageOnResize = debounce((function() {
+    var windowSize;
+    windowSize = (function() {
+      switch (false) {
+        case !(windowWidth > 1025):
+          return 'desktop';
+        default:
+          return 'mobile';
+      }
+    })();
+    if (windowSize === 'desktop') {
+      reInitDesktopFullPage();
+    }
+    if (windowSize === 'mobile') {
+      return reInitMobileFullPage();
+    }
+  }), 300);
+
+  startFullPageOnLoad = function() {
+    if ($(window).width() > 1025) {
+      return initDesktopFullPage();
+    } else {
+      return initMobileFullPage();
+    }
+  };
+
+  initDesktopFullPage = function() {
+    if ($('body').hasClass('home-page')) {
+      return $fullPage.fullpage({
+        scrollOverflow: true,
+        menu: '#menu',
+        anchors: ['none', 'hub', 'rent', 'events', 'team', 'contacts'],
+        verticalCentered: false
+      });
+    }
+  };
+
+  initMobileFullPage = function() {
+    $('.section').addClass('fp-auto-height');
+    if ($('body').hasClass('home-page')) {
+      return $fullPage.fullpage({
+        menu: '#menu',
+        anchors: ['none', 'hub', 'rent', 'events', 'team', 'contacts'],
+        css3: true,
+        autoScrolling: false,
+        keyboardScrolling: false,
+        fitToSection: false
+      });
+    }
+  };
+
+  reInitDesktopFullPage = debounce((function() {
+    $('.section').removeClass('fp-auto-height');
+    $.fn.fullpage.destroy('all');
+    return initDesktopFullPage();
+  }), 500);
+
+  reInitMobileFullPage = debounce((function() {
+    $('.section').addClass('fp-auto-height');
+    $.fn.fullpage.destroy('all');
+    return initMobileFullPage();
+  }), 500);
+
+  $(window).on('resize', function() {
+    if ($(window).outerWidth() !== windowWidth) {
+      $(window).trigger('widthResize');
+      return windowWidth = $(window).outerWidth();
+    }
+  });
+
+  $(window).on('widthResize', function() {
+    if ($('body').hasClass('home-page')) {
+      return startFullPageOnResize();
+    }
+  });
+
+  $(function() {
+    if ($('body').hasClass('home-page')) {
+      return startFullPageOnLoad();
+    }
+  });
+
+}).call(this);
+(function() {
   var initMaps, loaderInit, mapStyles, windowWidth;
 
   windowWidth = $(window).width();
@@ -1814,25 +1929,19 @@ $(document).ready(function() {
       return setTimeout((function() {
         $('#scroll-set li').removeClass('imVisible');
         return $li.addClass('imVisible');
-      }), delay += 800);
+      }), delay += 1200);
     });
     return setTimeout((function() {
       return $('#loader-wrapper').fadeOut(500);
-    }), 6500);
+    }), 10000);
   };
 
   $(function() {
     var swiper;
     loaderInit();
     if ($('.map').length) {
-      initMaps(document.querySelector('.map'), 48.921889, 24.710698);
+      initMaps(document.querySelector('.map'), 48.922208, 24.711226);
     }
-    $('#fullpage').fullpage({
-      scrollOverflow: true,
-      menu: '#menu',
-      anchors: ['none', 'rent', 'events', 'hub', 'team', 'contacts'],
-      verticalCentered: false
-    });
     swiper = new Swiper('.swiper-container', {
       nextButton: '.swiper-button-next',
       prevButton: '.swiper-button-prev',
