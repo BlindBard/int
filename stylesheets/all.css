@@ -2137,6 +2137,7 @@ th, td {
   .rent_1 b {
     font-weight: 600; }
   .rent_1 .js-morelink {
+    display: inline-block;
     font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
     font-size: 14px;
     line-height: 20px;
@@ -3067,7 +3068,7 @@ th, td {
     padding-top: 15px; }
 
   .rent_1 {
-    padding: 45px; }
+    padding: 40px; }
 
   .rent_2 {
     padding: 15px; }
@@ -3194,7 +3195,10 @@ th, td {
     right: 15px; }
 
   .form.comment {
-    margin-bottom: 30px; } }
+    margin-bottom: 30px; }
+
+  .bracket {
+    margin: 0 10px; } }
 @media screen and (max-width: 360px) {
   .swiper-slide img {
     width: auto;
@@ -3245,4 +3249,4 @@ th, td {
     padding-bottom: 110px; }
 
   .rent_1 .js-morelink {
-    margin-left: 35px; } }
+    margin-left: 30px; } }
