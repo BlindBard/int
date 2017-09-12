@@ -1359,24 +1359,26 @@ a {
   text-align: left; }
 
 .mouse {
+  display: inline-block;
   position: absolute;
-  display: block;
-  line-height: 24px;
   left: 50%;
-  bottom: 50px;
-  -webkit-transform: translate(-50%, -50%);
-      -ms-transform: translate(-50%, -50%);
-          transform: translate(-50%, -50%);
-  padding-left: 36px; }
+  bottom: 0;
+  -webkit-transform: translateX(-50%);
+      -ms-transform: translateX(-50%);
+          transform: translateX(-50%);
+  vertical-align: top;
+  line-height: 25px;
+  padding-left: 36px;
+  overflow: hidden; }
   .mouse::after {
-    background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABIAAAAZCAMAAAAL146mAAAAt1BMVEUAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABa5Z9DAAAAPHRSTlMAAQIDBAULGxwdJSgtLjE2NzhMTU5QV1pbXV5gYWRlpaasrbCxu7zAwcXJzc7S1tfZ3uXm5+jq7PT5+v3HBlUKAAAAq0lEQVR4AbWR1w6CQBREh4IFFRUBEQTsBbGAoiL8/3cZvC6R7LPzck/Ow2YzgzKiHsRZFge6iG+6UeSriqL6h6hHxkhdgUhwUrO8/YeGKtp9CMgnCz8xjhLGO9SysbCcEu63dJ05kjZhUdBtXpFLdYUCRJyitzgF/EXlEqeSFuPq9yu3riYLrom1BfnM9YUB1ypg3Gxm7NRkC4WeqjQ6XsgWoh1fz8ts9NnxDSBnEcUtfqd/AAAAAElFTkSuQmCC);
-    content: '';
+    content: "";
+    display: block;
     position: absolute;
     top: 0;
     left: 0;
-    display: block;
     width: 18px;
-    height: 25px; }
+    height: 25px;
+    background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABIAAAAZCAMAAAAL146mAAAAt1BMVEUAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABa5Z9DAAAAPHRSTlMAAQIDBAULGxwdJSgtLjE2NzhMTU5QV1pbXV5gYWRlpaasrbCxu7zAwcXJzc7S1tfZ3uXm5+jq7PT5+v3HBlUKAAAAq0lEQVR4AbWR1w6CQBREh4IFFRUBEQTsBbGAoiL8/3cZvC6R7LPzck/Ow2YzgzKiHsRZFge6iG+6UeSriqL6h6hHxkhdgUhwUrO8/YeGKtp9CMgnCz8xjhLGO9SysbCcEu63dJ05kjZhUdBtXpFLdYUCRJyitzgF/EXlEqeSFuPq9yu3riYLrom1BfnM9YUB1ypg3Gxm7NRkC4WeqjQ6XsgWoh1fz8ts9NnxDSBnEcUtfqd/AAAAAElFTkSuQmCC); }
 
 .rent-arrow {
   position: absolute;
@@ -1848,17 +1850,33 @@ a.coworking {
   left: 0;
   bottom: 0;
   right: 0;
-  width: 100%;
+  width: 59%;
   height: 100%;
   z-index: 0; }
 
+.coworking-img,
+.conference-img {
+  display: none; }
+
 .coworking-img {
+  position: absolute;
+  top: 0;
+  left: 0;
   background: url(../images/coworking.png) no-repeat;
-  background-position: center center; }
+  background-position: center center;
+  background-size: cover; }
 
 .conference-img {
+  position: absolute;
+  top: 0;
+  left: 0;
   background: url(../images/conference.png) no-repeat;
-  background-position: center center; }
+  background-position: center center;
+  background-size: cover; }
+
+.frame {
+  position: relative;
+  padding-bottom: 30px; }
 
 .coworking-slide {
   background: #e8da00; }
@@ -1950,11 +1968,23 @@ a .rent-logo {
 .coworking-info {
   position: relative;
   float: right;
-  padding: 0 330px 0 0;
-  z-index: 100; }
+  z-index: 100;
+  padding: 0 11% 0 960px; }
+
+.coworking-info {
+  background: url(../images/coworking.png) no-repeat;
+  background-position: left center;
+  background-size: auto 100%; }
+
+.conference-info {
+  background: url(../images/conference.png) no-repeat;
+  background-position: left center;
+  background-size: 725px 478px; }
 
 .big {
   width: 155px; }
+  .big span {
+    font-size: 10px; }
 
 .small {
   width: 70px; }
@@ -2305,6 +2335,9 @@ th, td {
     padding: 0;
     line-height: 40px; }
 
+  .frame {
+    padding-bottom: 50px; }
+
   .rent-logo {
     top: 40px; }
 
@@ -2330,7 +2363,7 @@ th, td {
   .conference-info,
   .coworking-info {
     float: right;
-    padding: 0 20px 0 0; } }
+    padding: 0 5% 0 750px; } }
 @media screen and (max-width: 1400px) {
   .events-box {
     max-width: 1120px; }
@@ -2375,6 +2408,14 @@ th, td {
     top: auto;
     left: -5px;
     bottom: 0; }
+
+  .coworking-img,
+  .conference-img {
+    display: block; }
+
+  .conference-info,
+  .coworking-info {
+    background: none; }
 
   .conference-slide .rent-logo {
     right: -5px; }
